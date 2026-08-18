@@ -75,6 +75,11 @@ table.tabs a:hover { color: #ddd6c2; }
 /* 目前所在的那一頁 */
 table.tabs td.on { border-bottom: 2px solid #c9a227; background: #241f18; }
 table.tabs td.on a { color: #c9a227; font-weight: bold; }
+/* 「贊助」永遠紅色,連它自己是目前頁的時候也是。
+   🔴 兩條都要寫:`td.on a` 的特異性比 `a.pay` 高,
+      只寫前面那條的話,停在贊助頁時又會被蓋回金色。 */
+table.tabs a.pay,
+table.tabs td.on a.pay { color: #d1594a; font-weight: bold; }
 
 /* ── 區塊標題 ── */
 td.sect {
@@ -113,6 +118,35 @@ table.list tr.last td { border-bottom: 0; }
 .white { color: #f0e9d6; }                      /* 亮白 · 一般強調 */
 .big   { font-size: 15px; }                     /* 大一級 */
 .small { font-size: 11px; }                     /* 小一級 */
+
+/* ── 編輯器色盤 ──────────────────────────────────────────────
+   🔴 上面那八個是**第一版**的樣式,頁面裡已經用了所以保留不動,
+      但它們把「顏色」和「字級／粗細」綁在一起(例如 .dim 同時是灰色
+      又是 11px、.warn 同時是紅色又是粗體)—— 一旦想「紅色但不要粗體」
+      或「灰色但要大字」就打架,這就是 2026-08-18 使用者說
+      「改成大就改不回中」的根。
+
+   所以新的色盤**只管顏色**,一個屬性都不多給。
+   粗體、字級各自獨立的按鈕控制,三者互不干涉。
+   全部只用 #RRGGBB —— IE7 只認這個。 */
+.c-red    { color: #e05b4a; }   /* 紅 · 警告、扣的東西 */
+.c-orange { color: #e0913a; }   /* 橘 · 重點 */
+.c-gold   { color: #d4ad2e; }   /* 金 · 數字、時間 */
+.c-lime   { color: #a8c95a; }   /* 亮綠 · 好事 */
+.c-green  { color: #6fae72; }   /* 綠 · 一般正面 */
+.c-cyan   { color: #5fb8ae; }   /* 青 · 補充說明 */
+.c-blue   { color: #7fa8d9; }   /* 藍 · 連結感 */
+.c-purple { color: #b58ad9; }   /* 紫 · 稀有、特殊 */
+.c-pink   { color: #dd8ab5; }   /* 粉 · 活動 */
+.c-tan    { color: #c9a87c; }   /* 土黃 · 柔和強調 */
+.c-white  { color: #f0e9d6; }   /* 亮白 · 一般強調 */
+.c-gray   { color: #948d78; }   /* 灰 · 次要 */
+
+/* ── 字級(獨立於顏色)──────────────────────────────────────
+   內文預設 13px。「中」就是**不套任何一個**,所以按「中」= 清掉這些 class。 */
+.f-xl { font-size: 18px; }
+.f-lg { font-size: 15px; }
+.f-sm { font-size: 11px; }
 
 a { color: #7fa8d9; text-decoration: none; }
 a:hover { text-decoration: underline; }
