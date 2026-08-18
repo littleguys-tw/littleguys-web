@@ -11,6 +11,15 @@
    可視寬度:WEB_CTRL 從 x=11 起、關閉鈕在 x=336 → 約 325px,取 320。
    ══════════════════════════════════════════════════════════════ */
 
+/* 🔴 強制永遠顯示垂直捲軸。
+   2026-08-18 實機回報:內容一長就拉不下去。
+   IE7 的 WebBrowser 控制項在某些情況不會自己長出捲軸,
+   明確寫 overflow-y:scroll 逼它出現。
+   (html 與 body 都要寫 —— IE7 兩邊的行為不一致) */
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   padding: 0;
@@ -19,6 +28,7 @@ body {
   font-family: "Microsoft JhengHei", "微軟正黑體", Arial;
   font-size: 13px;
   line-height: 1.7;
+  overflow-y: auto;
 }
 table.page { width: 320px; border-collapse: collapse; }
 td { padding: 0; }
