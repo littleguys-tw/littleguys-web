@@ -1,0 +1,132 @@
+@charset "utf-8";
+/* ══════════════════════════════════════════════════════════════
+   遊戲內建瀏覽器 · 共用樣式
+
+   🔴 這份是給 IE7 引擎看的,以下一律不准用:
+      flexbox / grid / border-radius / box-shadow / gradient
+      opacity / rgba() / transform / transition / 媒體查詢
+      網頁字型 / calc() / rem / CSS3 選擇器 / :hover(非 a)
+   排版一律 table。
+
+   可視寬度:WEB_CTRL 從 x=11 起、關閉鈕在 x=336 → 約 325px,取 320。
+   ══════════════════════════════════════════════════════════════ */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #14120f;
+  color: #ddd6c2;
+  font-family: "Microsoft JhengHei", "微軟正黑體", Arial;
+  font-size: 13px;
+  line-height: 1.7;
+}
+table.page { width: 320px; border-collapse: collapse; }
+td { padding: 0; }
+
+/* ── 標題列 ── */
+td.brand {
+  background: #2b2721;
+  padding: 8px 10px 7px;
+  color: #f0e9d6;
+  font-size: 15px;
+  font-weight: bold;
+}
+td.brand span.sub {
+  color: #948d78;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* ── 分頁 TAB ────────────────────────────────────────────────
+   🔴 IE7 沒辦法用 CSS 或 JS 安全地切換分頁,所以**每個分頁是獨立的
+      HTML 檔**,TAB 就是普通的 <a> 連結 —— 這是 IE7 百分之百穩的做法。
+      代價是切換會重新載入,但每頁只有幾 KB,感覺不出來。 */
+table.tabs { width: 320px; border-collapse: collapse; background: #1c1a15; }
+table.tabs td {
+  width: 80px;
+  border-bottom: 2px solid #3a372c;
+  border-right: 1px solid #14120f;
+  text-align: center;
+}
+table.tabs td.last { border-right: 0; }
+table.tabs a {
+  display: block;
+  padding: 7px 0 6px;
+  color: #948d78;
+  font-size: 12px;
+  text-decoration: none;
+}
+table.tabs a:hover { color: #ddd6c2; }
+/* 目前所在的那一頁 */
+table.tabs td.on { border-bottom: 2px solid #c9a227; background: #241f18; }
+table.tabs td.on a { color: #c9a227; font-weight: bold; }
+
+/* ── 區塊標題 ── */
+td.sect {
+  background: #211e19;
+  border-left: 3px solid #c9a227;
+  padding: 5px 9px;
+  color: #c9a227;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ── 內文 ── */
+td.body { padding: 9px 10px; }
+td.body p { margin: 0 0 7px 0; }
+td.body p.last { margin-bottom: 0; }
+
+/* ── 條列 ── */
+table.list { width: 100%; border-collapse: collapse; }
+table.list td {
+  padding: 5px 0;
+  border-bottom: 1px solid #2b2721;
+  vertical-align: top;
+}
+table.list td.k { color: #948d78; width: 88px; }
+table.list td.v { color: #ddd6c2; }
+table.list tr.last td { border-bottom: 0; }
+
+/* ── 強調 ────────────────────────────────────────────────────
+   這幾個是編輯器工具列會用到的。全部只用 color / font-size /
+   font-weight —— IE7 100% 支援,不會有相容問題。 */
+.hot   { color: #d98b3a; font-weight: bold; }   /* 橘 · 重點 */
+.ok    { color: #8fae5d; }                      /* 綠 · 好事 */
+.num   { color: #c9a227; font-weight: bold; }   /* 金 · 數字時間 */
+.dim   { color: #948d78; font-size: 11px; }     /* 灰小 · 補充 */
+.warn  { color: #d1594a; font-weight: bold; }   /* 紅 · 警告 */
+.white { color: #f0e9d6; }                      /* 亮白 · 一般強調 */
+.big   { font-size: 15px; }                     /* 大一級 */
+.small { font-size: 11px; }                     /* 小一級 */
+
+a { color: #7fa8d9; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── QR CODE 區 ──────────────────────────────────────────────
+   🔴 IE7 **不支援 data: 內嵌圖片**,所以一定要放獨立的圖檔。
+      建議 180x180 以上的 PNG,太小手機掃不到。 */
+td.qr { padding: 12px 10px 14px; text-align: center; }
+td.qr img {
+  width: 180px;
+  height: 180px;
+  border: 4px solid #ddd6c2;   /* 白框:QR 四周要留白才掃得到 */
+}
+td.qr div.qrcap {
+  color: #948d78;
+  font-size: 11px;
+  padding-top: 7px;
+}
+td.qr div.qrid {
+  color: #8fae5d;
+  font-size: 13px;
+  font-weight: bold;
+  padding-top: 2px;
+}
+
+/* ── 頁尾 ── */
+td.foot {
+  border-top: 1px solid #2b2721;
+  padding: 8px 10px;
+  color: #6f6a5c;
+  font-size: 11px;
+}

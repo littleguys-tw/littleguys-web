@@ -1,0 +1,23 @@
+# 只有「玩家會看到的網頁」要上傳,本機工具一律不上去。
+#
+# 理由:repo 是 public,任何人都看得到。
+# 編輯器與 python 工具沒有上傳的必要,而且會讓 repo 變雜。
+
+# 本機工具
+build_editor.py
+apply_edits.py
+check_ie7.py
+*.bat
+
+# 產生出來的東西
+編輯器.html
+_預覽.html
+
+# 備份
+bak/
+
+# 雜項
+__pycache__/
+*.pyc
+Thumbs.db
+desktop.ini
